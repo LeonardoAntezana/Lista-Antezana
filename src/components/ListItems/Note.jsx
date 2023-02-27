@@ -5,12 +5,15 @@ import ButtonCustom from '../ButtonCustom'
 const Note = ({item, openModalDelete, completedItem}) => {
   const {id, content, completed} = item;
   return (
-    <View style={styles.note}>
-      <TouchableOpacity onPress={() => completedItem(id)}>
-        <Text style={completed && styles.noteCompleted}>{content}</Text>
+    <TouchableOpacity 
+    style={completed ? {...styles.note, ...styles.bgColorCompleted} : styles.note }
+    onPress={() => completedItem(id)}
+    >
+      <TouchableOpacity>
+        <Text style={completed ? styles.noteCompleted : styles.notCompleted}>{content}</Text>
       </TouchableOpacity>
-      <ButtonCustom style={styles.button} title='delete' onpress={() => openModalDelete(item)}/>
-    </View>
+      <ButtonCustom style={styles.button} title='borrar' onpress={() => openModalDelete(item)}/>
+    </TouchableOpacity>
   )
 }
 
@@ -21,18 +24,23 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 20,
     paddingVertical: 10,
-    backgroundColor: 'yellow',
+    backgroundColor: '#e2762f',
     flexDirection: 'row',
     justifyContent:'space-around',
     alignItems: 'center',
     borderRadius: 5,
   },
   button:{
-    borderRadius: 5,
-    backgroundColor: 'red',
+    backgroundColor: '#dd4566',
+  },
+  bgColorCompleted:{
+    backgroundColor: '#f7a56f',
   },
   noteCompleted: {
    textDecorationLine: 'line-through',
-   color: 'grey' 
+   color: '#fff' 
+  },
+  notCompleted: {
+    color: '#fff'
   }
 })

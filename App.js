@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text} from 'react-native';
 import { InputNewItem, List, ModalCustom } from './src/components';
 
 export default function App() {
@@ -35,7 +35,12 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <InputNewItem value={valueInput} onChangeText={onChangeInput} addItem={addItem}/>
+      <InputNewItem 
+      value={valueInput} 
+      onChangeText={onChangeInput} 
+      addItem={addItem}
+      titleButton='agregar' 
+      placeholder='Ingrese una nota'/>
       <List elements={items} openModalDelete={openModalDelete} completedItem={completedItem}/>
       <ModalCustom 
       modalVisible={modalVisible}
@@ -43,6 +48,7 @@ export default function App() {
       cancelModalVisible={cancelModal}
       deleteNote={deleteNote}
       />
+      {items.length !== 0 && <Text style={styles.info}> Para marcar las notas como completadas, presionelas</Text>}
     </View>
   );
 }
@@ -50,7 +56,14 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 50,
-    paddingHorizontal: 30,
+    marginTop: 50,
+    paddingHorizontal: 40,
   },
+  info:{
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 13,
+    marginBottom: 20,
+    color: '#e2762f',
+  }
 });

@@ -1,9 +1,12 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 
-const ButtonCustom = ({onpress, title, style}) => {
+const ButtonCustom = ({onpress, title, style, disabled}) => {
   return (
-    <TouchableOpacity onPress={onpress} style={{...styles.button ,...style}}>
+    <TouchableOpacity
+    disabled={disabled}  
+    onPress={onpress} 
+    style={{...styles.button ,...style}}>
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
   )
@@ -13,6 +16,7 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         paddingHorizontal: 10,
         backgroundColor: 'grey',
+        borderRadius: 5,
     },
     text:{
         textTransform: 'uppercase',

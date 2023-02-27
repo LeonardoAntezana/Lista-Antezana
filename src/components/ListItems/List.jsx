@@ -7,7 +7,7 @@ const List = ({elements, openModalDelete, completedItem }) => {
     <FlatList
     data={elements}
     renderItem={({item}) => <Note item={item} openModalDelete={openModalDelete} completedItem={completedItem}/>}
-    ListEmptyComponent={<Text style={styles.listEmpty}>Nothing here</Text>}
+    ListEmptyComponent={<Text style={styles.listEmpty}>Sin notas</Text>}
     keyExtractor={(item) => item.id}
     />
   )
@@ -17,8 +17,8 @@ export default List
 
 const styles = StyleSheet.create({
   listEmpty: {
-    marginTop: 20,
+    marginTop: 50,
     textAlign: 'center',
     fontSize: 20,
-  }
+  },
 })
